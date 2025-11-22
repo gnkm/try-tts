@@ -5,7 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "boto3>=1.35.0",
     "google-cloud-texttospeech>=2.33.0",
     "python-dotenv>=1.2.1",
+    "rich>=13.9.0",
     "typer>=0.20.0",
 ]
