@@ -1,5 +1,7 @@
 """指定した SSML ファイルを受け取り、Amazon Polly を使ってオーディオファイルを生成する。
 
+※ `<voice>` タグが使えないので注意。
+
 Usage:
     # 出力ファイル名を自動生成する場合
     uv run src/amazon_tts.py data/ssmls/input.ssml
