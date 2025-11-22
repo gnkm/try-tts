@@ -7,8 +7,8 @@ Usage:
     # 出力ファイル名を指定する場合
     uv run src/amazon_tts.py data/ssmls/input.ssml --output data/audios/output.mp3
 
-    # モデルを指定する場合
-    uv run src/amazon_tts.py data/ssmls/input.ssml --model 'Mizuki'
+    # 音声を指定する場合
+    uv run src/amazon_tts.py data/ssmls/input.ssml --voice Mizuki
 """
 
 import os
@@ -97,10 +97,10 @@ def main(
         "-o",
         help="出力オーディオファイルのパス（MP3形式）。指定しない場合は自動生成されます。",
     ),
-    model: PollyVoice = typer.Option(
+    voice: PollyVoice = typer.Option(
         PollyVoice.MIZUKI,
-        "--model",
-        "-m",
+        "--voice",
+        "-v",
         help="使用する音声モデル名（Amazon Polly VoiceId）",
         case_sensitive=False,
     ),
@@ -113,11 +113,11 @@ def main(
 
         # 出力ファイル名を決定（指定されていない場合は自動生成、utils.pyの関数を使用）
         if output is None:
-            output = generate_output_filename(input_file, model.value)
+            output = generate_output_filename(input_file, voice.value)
             typer.echo(f"出力ファイル名: {output}")
 
         # 音声合成を実行
-        synthesize_ssml(ssml_text, model.value, output)
+        synthesize_ssml(ssml_text, voice.value, output)
 
         typer.echo("✓ 処理が完了しました")
 
