@@ -1,0 +1,35 @@
+repos:
+  # 基本的なpre-commitフック
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # プライベートキーの検出
+      - id: detect-private-key
+      # AWSクレデンシャルの検出
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+      # 大きなファイルの追加を防ぐ（クレデンシャルファイルは通常小さいが念のため）
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+      # ファイル末尾の空白行を確認
+      - id: end-of-file-fixer
+      # 行末の空白を削除
+      - id: trailing-whitespace
+      # YAMLファイルの構文チェック
+      - id: check-yaml
+      # JSONファイルの構文チェック
+      - id: check-json
+
+  # シークレット検出ツール
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]
+        exclude: package.lock.json
+
+  # Gitleaks - より高度なシークレットスキャニング
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.1
+    hooks:
+      - id: gitleaks
