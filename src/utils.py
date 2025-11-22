@@ -13,7 +13,7 @@ def generate_output_filename(input_file: Path, model_name: str) -> Path:
 
     Example:
         >>> generate_output_filename(Path("data/ssmls/fish-intro.ssml"), "ja-JP-Chirp3-HD-Zephyr")
-        Path("data/audios/fish-intro_ja-JP-Chirp3-HD-Zephyr.mp3")
+        Path("data/audios/ja-JP-Chirp3-HD-Zephyr_fish-intro.mp3")
     """
     # 入力ファイルの拡張子なしのファイル名を取得
     base_name = input_file.stem
@@ -21,8 +21,8 @@ def generate_output_filename(input_file: Path, model_name: str) -> Path:
     # モデル名をファイル名に使用できる形式に変換（既に問題ないはずだが念のため）
     safe_model_name = model_name.replace("/", "-").replace("\\", "-")
 
-    # 出力ファイル名を生成
-    output_filename = f"{base_name}_{safe_model_name}.mp3"
+    # 出力ファイル名を生成（ボイスネームの後にSSMLファイル名）
+    output_filename = f"{safe_model_name}_{base_name}.mp3"
 
     # data/audios/ディレクトリに配置
     output_dir = Path("data/audios")
