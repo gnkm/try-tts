@@ -34,15 +34,18 @@ def synthesize_ssml(
     """SSMLをオーディオファイルに変換する。
 
     Args:
-        ssml_text: SSML形式のテキスト
+        ssml_text: SSML形式のテキスト（{voice_name}プレースホルダーを含む）
         voice_name: 使用する音声モデル名（例: 'ja-JP-Chirp3-HD-Zephyr'）
         output_path: 出力先のオーディオファイルパス
     """
+    # SSMLテキスト内のプレースホルダーにボイス名を設定
+    formatted_ssml = ssml_text.format(voice_name=voice_name)
+
     # Text-to-Speechクライアントを初期化
     client = texttospeech.TextToSpeechClient()
 
     # 音声リクエストを構築
-    synthesis_input = texttospeech.SynthesisInput(ssml=ssml_text)
+    synthesis_input = texttospeech.SynthesisInput(ssml=formatted_ssml)
 
     # 言語コードを音声名から抽出（例: 'ja-JP-Chirp3-HD-Zephyr' -> 'ja-JP'）
     language_code = "-".join(voice_name.split("-")[:2])
