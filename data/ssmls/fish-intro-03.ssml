@@ -1,0 +1,5 @@
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ja-JP">
+    <voice name="{voice_name}">
+        Fish をインストールしたら、<break time="300ms"/>プラグインマネージャーである Fisher もインストールしましょう。
+    </voice>
+</speak>

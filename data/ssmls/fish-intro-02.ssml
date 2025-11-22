@@ -1,3 +1,5 @@
-<speak>
-  Fish とは、「the friendly interactive shell」の略で、<break time="300ms"/>フレンドリーなインタラクティブシェルを意味します。
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ja-JP">
+    <voice name="{voice_name}">
+        Fish とは、「the friendly interactive shell」の略で、<break time="300ms"/>フレンドリーなインタラクティブシェルを意味します。
+    </voice>
 </speak>

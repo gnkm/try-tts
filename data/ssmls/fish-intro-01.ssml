@@ -1,3 +1,5 @@
-<speak>
-  今日は Fish シェルを紹介します。
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="ja-JP">
+    <voice name="{voice_name}">
+        今日は Fish シェルを紹介します。
+    </voice>
 </speak>
